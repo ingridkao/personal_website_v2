@@ -31,12 +31,16 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    // https://github.com/janniks/vue-notion
+    'vue-notion/nuxt'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    //https://github.com/nuxt-community/proxy-module
+    '@nuxtjs/proxy',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
   ],
@@ -44,7 +48,18 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    proxy: true,
+    prefix: '/notion_api',
+  },
+
+  proxy: {
+    '/notion_api/': {
+      target: 'https://api.notion.com/v1', 
+      changeOrigin: true, 
+      pathRewrite: {
+        '^/notion_api': '',
+      }
+    }
   },
 
 
