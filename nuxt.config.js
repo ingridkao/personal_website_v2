@@ -8,8 +8,13 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'format-detection', content: 'telephone=no' },
       { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'my website description'
+      }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -73,6 +78,20 @@ export default {
   //https://www.nuxtjs.cn/faq/github-pages
   target: 'static',
   router: {
-    base: '/personal_website_v2/'
+    base: '/personal_website_v2/',
+    // https://nuxtjs.org/docs/features/file-system-routing#extendroutes
+    extendRoutes(routes, resolve) {
+      routes.push({
+        name: 'custom',
+        path: '*',
+        component: resolve(__dirname, 'pages/404.vue')
+      })
+    }
+  },
+
+  // https://nuxtjs.org/docs/features/loading
+  loading: {
+    color: 'blue',
+    height: '5px'
   }
 }

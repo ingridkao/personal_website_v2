@@ -2,12 +2,11 @@
   <main>
     <NuxtLink to="/">Home page</NuxtLink>
     <NuxtLink to="/about">about page</NuxtLink>
-    <NuxtLink to="/investment">Investment page</NuxtLink>
   </main>
 </template>
 
 <script>
 export default {
-  name: 'IndexPage'
+  name: 'InvestmentResearch'
 }
 </script>

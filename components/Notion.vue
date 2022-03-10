@@ -30,7 +30,7 @@
 const NOTION_TOKEN = `Bearer secret_8kOmCEmmZO4k1CPPQyl1nqjtMIQM4XtWysvG8pz4w9z`
 const NOTION_VERSION = "2021-08-16"
 export default {
-  name: 'NuxtTutorial',
+  name: 'NuxtNotion',
   data(){
     return {
       pageList: [],
