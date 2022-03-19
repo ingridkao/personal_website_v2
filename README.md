@@ -81,6 +81,16 @@ ingridkao
 ```
 
 
+##大踩雷紀錄
+
+### 1. Nuxt toggle dark mode
+這個踩了快六小時快吐血氣死，用了所有官方範例都不行切換，一直找不到`this.$color-mode`!!
+
+直到翻到一個github範例，發現他的`@nuxtjs/color-mode`版本和官方不大一樣，clone下來後把nuxt等的版本都用和專案一樣，發現就是`@nuxtjs/color-mode`版本問題!!
+
+最大的問題就是2.x以後的`@nuxtjs/color-mode`不會在`.nuxt`目錄下建立`color-mode`，退到**v1.1.1**就會建立，測試後也不用寫全域nuxt去切換，裡面已補localStorage。
+
+
 ## Build Setup
 
 ```bash

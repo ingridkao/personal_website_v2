@@ -1,11 +1,11 @@
 <template>
-	<main>
-		index
+  	<main>
+		<MainHeader/>
 	</main>
 </template>
 
 <script>
 export default {
-  	name: 'IndexPage'
+	name: 'InvestmentResearch'
 }
 </script>

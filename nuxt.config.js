@@ -8,13 +8,7 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { name: 'format-detection', content: 'telephone=no' },
-      { hid: 'description', name: 'description', content: '' },
-      {
-        hid: 'description',
-        name: 'description',
-        content: 'my website description'
-      }
+      { hid: 'description', name: 'description', content: 'my website description'}
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -36,6 +30,8 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    //https://github.com/nuxt-community/color-mode-module/issues/25
+    '@nuxtjs/color-mode',
     // https://github.com/janniks/vue-notion
     'vue-notion/nuxt'
   ],
@@ -47,7 +43,7 @@ export default {
     //https://github.com/nuxt-community/proxy-module
     '@nuxtjs/proxy',
     // https://go.nuxtjs.dev/content
-    '@nuxt/content',
+    '@nuxt/content'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -67,12 +63,17 @@ export default {
     }
   },
 
-
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    postcss: {
+      plugins: {
+        tailwindcss: {},
+        autoprefixer: {}
+      }
+    }
   },
 
   //https://www.nuxtjs.cn/faq/github-pages

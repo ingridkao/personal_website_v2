@@ -1,7 +1,6 @@
 <template>
   <main>
-    <NuxtLink to="/">Home page</NuxtLink>
-    <NuxtLink to="/about">about page</NuxtLink>
+    Investment Page
   </main>
 </template>
 

@@ -1,8 +1,7 @@
 <template>
-  <main>
-    <NuxtLink to="/">Home page</NuxtLink>
-    <NuxtLink to="/about">about page</NuxtLink>
-  </main>
+	<main>
+		Investment Page s
+	</main>
 </template>
 
 <script>

@@ -1,9 +1,7 @@
 <template>
-    <main>
-        About Page
-        <NuxtLink to="/">Home page</NuxtLink>
-        <Notion/>
-    </main>
+	<main>
+		<Notion/>
+	</main>
 </template>
 
 <script>
