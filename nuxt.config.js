@@ -63,6 +63,10 @@ export default {
     }
   },
 
+  purgeCSS: {
+    whitelist: ['dark-mode']
+  },
+
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {},
 
