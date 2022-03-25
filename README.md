@@ -27,8 +27,8 @@ ingridkao
 │       │   APPLE.txt
 │       │   ...
 │
-└───Coding
-│   │   資產配置:PieChart
+└───Coding | F2E
+│   │   List
 │   │
 │   └───Vue踩雷紀錄
 │   |   |   Basic.txt
@@ -50,7 +50,7 @@ ingridkao
 │   └───工具
 │       |   ...
 │
-└───Travel
+└───旅行 | Travel
 │   │   Map&List
 │   │
 │   └───台灣
@@ -65,7 +65,7 @@ ingridkao
 │       |   北海道.txt
 │       |   ...
 │
-└───日常
+└───日常 | Commonplace
     │   List
     │
     └───閱讀摘要
