@@ -1,3 +1,5 @@
+import Sitemap from './config/sitemap'
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -43,7 +45,9 @@ export default {
     //https://github.com/nuxt-community/proxy-module
     '@nuxtjs/proxy',
     // https://go.nuxtjs.dev/content
-    '@nuxt/content'
+    '@nuxt/content',
+    // https://sitemap.nuxtjs.org
+    '@nuxtjs/sitemap'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -69,6 +73,8 @@ export default {
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {},
+
+  sitemap: Sitemap,
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

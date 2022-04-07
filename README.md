@@ -3,6 +3,7 @@ title: 'personal website v2'
 disqus: hackmd
 ---
 # personal_website_v2
+[DEMO](https://ingridkao.github.io/personal_website_v2/)
 
 ![Version](https://img.shields.io/github/package-json/v/ingridkao/personal_website_v2)
 ![Commit activity](https://img.shields.io/github/commit-activity/m/ingridkao/personal_website_v2?style=plastic)
@@ -27,8 +28,8 @@ ingridkao
 │       │   APPLE.txt
 │       │   ...
 │
-└───Coding
-│   │   資產配置:PieChart
+└───Coding | F2E
+│   │   List
 │   │
 │   └───Vue踩雷紀錄
 │   |   |   Basic.txt
@@ -50,7 +51,7 @@ ingridkao
 │   └───工具
 │       |   ...
 │
-└───Travel
+└───旅行 | Travel
 │   │   Map&List
 │   │
 │   └───台灣
@@ -89,6 +90,9 @@ ingridkao
 直到翻到一個github範例，發現他的`@nuxtjs/color-mode`版本和官方不大一樣，clone下來後把nuxt等的版本都用和專案一樣，發現就是`@nuxtjs/color-mode`版本問題!!
 
 最大的問題就是2.x以後的`@nuxtjs/color-mode`不會在`.nuxt`目錄下建立`color-mode`，退到**v1.1.1**就會建立，測試後也不用寫全域nuxt去切換，裡面已補localStorage。
+
+另外記得加import tailwindcss，不然build出來的版本沒有tailwindcss，可以參考`assets/css/tailwind.css`
+
 
 
 ## Build Setup

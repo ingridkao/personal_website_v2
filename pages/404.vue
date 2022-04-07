@@ -1,12 +1,11 @@
 <template>
-  <main>
-      404
-    <NuxtLink to="/">Home page</NuxtLink>
-  </main>
+	<main>
+		<h1>404</h1>
+	</main>
 </template>
 
 <script>
 export default {
-  name: '404'
+  	name: 'ErrorPage'
 }
 </script>
