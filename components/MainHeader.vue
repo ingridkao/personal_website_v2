@@ -1,27 +1,22 @@
 <template>
-    <nav class="bg-gray-200 dark:bg-gray-800">
+    <nav class="shadow-md dark:shadow-none">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex items-center">
+            <div class="flexItemsCenter justify-between h-16">
+                <div class="flex-items-center">
                     <NuxtLink to="/" class="flex-shrink-0">
-                        <img
-                            class="h-8 w-8"
-                            src="https://tailwindui.com/img/logos/workflow-mark-indigo-400.svg"
-                            alt="Workflow logo"
-                        >
+                        <img class="h-8 w-8" src="~/static/icon.png" alt="Ingrid Kao">
                     </NuxtLink>
                 </div>
 
                 <div class="hidden md:block">
-                    <div class="ml-4 flex items-center md:ml-6">
+                    <div class="flexItemsCenter ml-4 md:ml-6">
                         <div class="mr-10 flex items-baseline">
                             <NuxtLink 
                                 v-for="(linkItem, linkIndex) in MainLink" :key="linkIndex"
                                 :to="linkItem.url" 
                                 class="
-                                    navItem hover:text-white 
-                                    focus:outline-none focus:text-white focus:bg-gray-700
-                                    dark:text-gray-300 dark:hover:text-gray-500 dark:focus:text-gray-600
+                                    navItem text-gray-500 dark:text-gray-400 hover:text-gray-600
+                                    focus:outline-none focus:text-gray-500 focus:bg-gray-800
                                 "
                             >
                                 <div class="text-sm font-medium">{{linkItem.title}}</div>
@@ -33,9 +28,8 @@
                             @click="toggleDarkMode"
                             aria-label="Color Mode"
                             class="
-                                p-1 rounded-full text-gray-400 hover:text-white
-                                focus:outline-none focus:text-white focus:bg-gray-700
-                                dark:text-gray-300 dark:hover:text-gray-500 dark:focus:text-gray-600
+                                navBtn text-gray-500 dark:text-gray-400 hover:text-gray-600
+                                focus:outline-none focus:text-gray-500 focus:bg-gray-800
                             "
                         >
                             <svg v-if="dark" eviewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" >
@@ -60,7 +54,10 @@
                     <!-- Mobile menu button -->
                     <button
                         @click="toggleMenu"
-                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white"
+                        class="inline-flex items-center justify-center p-2 rounded-md 
+                            text-gray-700 hover:text-gray-600 hover:bg-gray-800 
+                            focus:outline-none focus:bg-gray-800 focus:text-gray-500
+                        "
                     >
                     <svg
                         :class="[isOpen ? 'hidden' : 'block', 'h-6 w-6']"
@@ -96,49 +93,44 @@
             <div class="px-2 pt-2 pb-3 sm:px-3">
             <a
                 href="#"
-                class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700"
+                class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-800 focus:outline-none focus:text-gray-500 focus:bg-gray-800"
             >Dashboard</a>
             <a
                 href="#"
-                class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-gray-600 hover:bg-gray-800 focus:outline-none focus:text-gray-500 focus:bg-gray-800"
             >Team</a>
             <a
                 href="#"
-                class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-gray-600 hover:bg-gray-800 focus:outline-none focus:text-gray-500 focus:bg-gray-800"
             >Projects</a>
             <a
                 href="#"
-                class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-gray-600 hover:bg-gray-800 focus:outline-none focus:text-gray-500 focus:bg-gray-800"
             >Calendar</a>
             <a
                 href="#"
-                class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-gray-600 hover:bg-gray-800 focus:outline-none focus:text-gray-500 focus:bg-gray-800"
             >Reports</a>
             </div>
-            <div class="pt-4 pb-3 border-t border-gray-700">
-            <div class="flex items-center px-5">
-                <div class="flex-shrink-0">
-                <img
-                    class="h-10 w-10 rounded-full"
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                    alt
-                >
+            <div class="pt-4 pb-3 border-t border-gray-800">
+                <div class="flexItemsCenter px-5">
+                    <div class="flex-shrink-0">
+                    <img
+                        class="h-10 w-10 rounded-full"
+                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt
+                    >
+                    </div>
+                    <div class="ml-3">
+                    <div class="text-base font-medium leading-none text-white">Tom Cook</div>
+                    <div class="mt-1 text-sm font-medium leading-none text-gray-400">tom@example.com</div>
+                    </div>
                 </div>
-                <div class="ml-3">
-                <div class="text-base font-medium leading-none text-white">Tom Cook</div>
-                <div class="mt-1 text-sm font-medium leading-none text-gray-400">tom@example.com</div>
+                <div class="mt-3 px-2">
+                    <a href="#"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-600 hover:bg-gray-800 focus:outline-none focus:text-gray-500 focus:bg-gray-800"
+                    >Profile</a>
                 </div>
-            </div>
-            <div class="mt-3 px-2">
-                <a
-                href="#"
-                class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-                >Profile</a>
-                <!-- <a
-                href="#"
-                class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-                >Settings</a> -->
-            </div>
             </div>
         </div>
     </nav>
@@ -175,6 +167,12 @@ export default {
 </script>
 <style scope>
     .navItem {
-        @apply ml-4 px-3 py-2 rounded-md text-gray-400;
+        @apply ml-4 px-3 py-2 rounded-md;
+    }
+    .navBtn {
+        @apply p-1 rounded-full;
+    }
+    .flexItemsCenter{
+        @apply flex items-center;
     }
 </style>

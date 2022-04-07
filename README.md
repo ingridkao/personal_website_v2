@@ -66,7 +66,7 @@ ingridkao
 │       |   北海道.txt
 │       |   ...
 │
-└───日常
+└───日常 | Commonplace
     │   List
     │
     └───閱讀摘要
