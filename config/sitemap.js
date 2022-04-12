@@ -1,6 +1,20 @@
 import CodingList from './CodingList'
 export const MainLink = [
     {
+        url: '/BlogMD',
+        title: 'Blog',
+        subtitle: 'BlogMD',
+        priority: 1,
+        lastmod: '2022-03-30T13:30:00.000Z'
+    },
+    // {
+    //     url: '/about',
+    //     title: '關於',
+    //     subtitle: 'About',
+    //     priority: 1,
+    //     lastmod: '2022-03-30T13:30:00.000Z'
+    // },
+    {
         url: '/coding',
         title: '叩叮',
         subtitle: 'Coding',

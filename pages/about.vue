@@ -1,6 +1,7 @@
 <template>
 	<main>
-		<Notion/>
+		<!-- <Notion/> -->
+		<BlogMD/>
 	</main>
 </template>
 

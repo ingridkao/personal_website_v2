@@ -82,7 +82,7 @@ ingridkao
 ```
 
 
-##大踩雷紀錄
+## 大踩雷紀錄
 
 ### 1. Nuxt toggle dark mode
 這個踩了快六小時快吐血氣死，用了所有官方範例都不行切換，一直找不到`this.$color-mode`!!
@@ -111,3 +111,4 @@ $ npm run start
 # generate static project
 $ npm run generate
 ```
+###### tags: `Vue` `Nuxt`
