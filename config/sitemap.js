@@ -7,6 +7,13 @@ export const MainLink = [
         priority: 1,
         lastmod: '2022-03-30T13:30:00.000Z'
     },
+    {
+        url: '/Book',
+        title: '閱讀',
+        subtitle: 'Read',
+        priority: 1,
+        lastmod: '2022-04-14T13:30:00.000Z'
+    },
     // {
     //     url: '/about',
     //     title: '關於',
