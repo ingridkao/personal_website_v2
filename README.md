@@ -93,7 +93,19 @@ ingridkao
 
 另外記得加import tailwindcss，不然build出來的版本沒有tailwindcss，可以參考`assets/css/tailwind.css`
 
+### 2. @tailwindcss/typography + @tailwindcss/color-mode
+因為安裝`@nuxt/content`後想要順利使用`@tailwindcss/typography`來減少開發時間，但tailwindcss社群變動真的太大了，文件要看清楚，可以的話找別的案例來做應該會比較不會採太多坑。
+- 有參考[這個案例](https://github.com/kissu/nuxt-tailwind-typography-darkmode-boilerplate)
 
+碰到的問題是，安裝typography後之前的dark mode就不能使用了，Debug後猜測應該是他的class suffix問題，切換的時候呈現`dark-mode`只要改成`dark`就可以使用，查了一下在`nuxt.config.js`中加入下面這一段就可以正常運作
+```bash
+...
+  colorMode: {
+    classSuffix: '',
+  },
+...
+```
+Nuxt2.x只能用`@nuxtjs/color-mode`2.X的版本，這時升級到2.1.1(最後一個修正版)也正常運作，之前的問題1根本不是問題...眼神死...
 
 ## Build Setup
 
