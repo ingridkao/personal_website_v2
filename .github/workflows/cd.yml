@@ -16,15 +16,16 @@ jobs:
         uses: actions/checkout@master
 
       - name: Setup node env
-        uses: actions/setup-node@v2.1.2
+        uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node }}
+          node-version: ${{ matrix.node }},
+          cache: 'yarn'
 
       - name: Install dependencies
-        run: npm install
+        run: yarn
 
       - name: Generate
-        run: npm run generate
+        run: yarn generate
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
