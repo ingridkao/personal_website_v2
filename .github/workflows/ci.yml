@@ -27,7 +27,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
-          check-latest: true
 
       # - name: Cache node_modules 📦
       #   uses: actions/cache@v3
@@ -38,7 +37,14 @@ jobs:
       #       ${{ runner.os }}-node-
 
       - name: Install dependencies 👨🏻‍💻
-        run: npm ci
+        run: |
+          if [ -e yarn.lock ]; then
+          yarn install --frozen-lockfile
+          elif [ -e package-lock.json ]; then
+          npm ci --prefer-offline --no-audit
+          else
+          npm i
+          fi
 
       - name: Run tests 🧪
         run: npm run test
