@@ -6,7 +6,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flexItemsCenter justify-between h-16">
                 <div class="flex-items-center">
-                    <NuxtLink to="/" class="flex-shrink-0">
+                    <NuxtLink to="/">
                         <img class="h-8 w-8" src="~/static/icon.png" alt="Ingrid Kao">
                     </NuxtLink>
                 </div>

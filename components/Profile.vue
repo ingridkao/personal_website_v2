@@ -1,6 +1,6 @@
 <template>
     <div class="flexItemsCenter">
-        <div class="flex-shrink-0" v-if="!menu">
+        <div v-if="!menu">
             <img
                 class="h-12 w-12 rounded-full"
                 src="https://lh3.googleusercontent.com/ogw/ADea4I7qk-RRHHMefYLiY7NPU8fV5i7vBMrK6PP8I2273zI=s64-c-mo"
