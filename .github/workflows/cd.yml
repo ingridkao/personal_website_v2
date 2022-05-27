@@ -31,7 +31,15 @@ jobs:
           fi
 
       - name: Generate
-        run: yarn generate
+        run: |
+          if [ -e yarn.lock ]; then
+          yarn generate
+          elif [ -e package-lock.json ]; then
+          npm run generate
+          else
+          npm run generate
+          fi
+
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
