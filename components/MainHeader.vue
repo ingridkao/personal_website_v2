@@ -16,11 +16,7 @@
                             <NuxtLink 
                                 v-for="(linkItem, linkIndex) in MainLink" :key="linkIndex"
                                 :to="linkItem.url" 
-                                class="
-                                    navItem 
-                                    hover:text-gray-600 dark:hover:text-gray-200
-                                    focus:outline-none focus:text-gray-300 focus:bg-gray-800
-                                "
+                                class="navItem navBtnStyle"
                             >
                                 <div class="text-sm font-medium">{{linkItem.title}}</div>
                                 <div class="text-xs">{{linkItem.subtitle}}</div>
@@ -44,10 +40,7 @@
                     <!-- Mobile menu button -->
                     <button
                         @click="toggleMenu"
-                        class="inline-flex items-center justify-center p-2 rounded-md 
-                            hover:text-gray-600 focus:text-gray-500 dark:focus:text-gray-300
-                            focus:outline-none
-                        "
+                        class="inline-flex items-center justify-center p-2 rounded-md navBtnStyle"
                     >
                     <svg
                         :class="[isOpenMenu ? 'hidden' : 'block', 'h-6 w-6']"
@@ -84,12 +77,7 @@
                 <NuxtLink 
                     v-for="(linkItem, linkIndex) in MainLink" :key="linkIndex"
                     :to="linkItem.url" 
-                    class="
-                        navMobileItem 
-                        hover:text-gray-600 
-                        dark:hover:text-gray-200
-                        focus:outline-none focus:text-gray-300 focus:bg-gray-800
-                    "
+                    class="navMobileItem navBtnStylefocus:bg-gray-800"
                 >
                     <div class="text-sm font-medium">{{linkItem.title}}</div>
                     <div class="text-xs">{{linkItem.subtitle}}</div>
@@ -144,30 +132,12 @@ export default {
     .navItem:after,
     .navMobileItem:after{
         content: '';
-        position: absolute;
-        background-color: #76cdda;
-        transition-property: height;
-        transition-duration: 1s;
-    }
-    .navItem:after{
-
+        @apply absolute transition-height duration-1000 bg-cyan-300;
     }
     .navMobileItem:after{
-        top:0;
-        left: 3px;
-        width: 2px;
-        height: 0px;
-    }
-    .navItem:hover:after{
-
+        @apply top-0 left-1 w-0.5 h-0;
     }
     .navMobileItem:hover:after{
-        height: 100%;
-    }
-    .navBtn {
-        @apply p-1 rounded-full;
-    }
-    .flexItemsCenter{
-        @apply flex items-center;
+        @apply h-full;
     }
 </style>

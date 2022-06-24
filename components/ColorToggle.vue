@@ -2,11 +2,7 @@
     <button
         aria-label="Color Mode"
         @click="toggleDarkMode"
-        class="
-            navBtn
-            hover:text-gray-600 dark:hover:text-gray-200
-            focus:outline-none focus:text-gray-300
-        "
+        class="navBtn navBtnStyle"
     >
         <svg v-if="dark" eviewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" >
             <path 
@@ -47,8 +43,3 @@ export default {
     }
 }
 </script>
-<style scope>
-    .navBtn {
-        @apply p-1 rounded-full;
-    }
-</style>

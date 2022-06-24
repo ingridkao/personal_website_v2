@@ -6,6 +6,9 @@ module.exports = {
 	],
 	theme: {
 		extend: {
+			transitionProperty: {
+				'height': 'height'
+			},
 			typography: (theme) => ({
 				light: {
 					// you can have a 'dark' key here instead (eg: dark:prose-dark), just need to update the color values below

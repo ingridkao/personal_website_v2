@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<NuxtContent
-			class="prose prose-sm sm:prose lg:prose-lg xl:prose-2xl mx-auto"
+			class="prose dark:prose-invert prose-sm lg:prose-lg xl:prose-2xl mx-auto"
 			:document="document"
 		/>
 		<Utterances/>
@@ -10,10 +10,6 @@
 
 <script>
 export default {
-	// async asyncData({ $content }) {
-	// 	const document = await $content("hello").fetch()
-	// 	return { document }
-	// }
 	async asyncData({ $content, params }) {
 		try {
 			const document = await $content({ deep: true })
@@ -27,8 +23,6 @@ export default {
 				message: 'Page could not be found',
 			})
 		}
-	},
-
-
+	}
 }
 </script>

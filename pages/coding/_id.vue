@@ -1,11 +1,33 @@
 <template>
-  	<main>
-		<MainHeader/>
+	<main>
+		<NuxtContent
+			class="prose prose-sm lg:prose-lg xl:prose-2xl mx-auto"
+			:document="document"
+		/>
+		<Utterances/>
 	</main>
 </template>
 
 <script>
 export default {
-	name: 'InvestmentResearch'
+	async asyncData ({ $content, route }) {
+		const Search = route? route.params.id: ""
+		let query = await $content('Coding')
+		if (Search) {
+			query = query.search(Search)
+			try {
+				const document = await query.fetch()
+				return { document: document[0] }
+			} catch(error) {
+				console.log(`Error: ${error}`);
+			}
+		}else{
+			error({
+				statusCode: 404,
+				message: 'Page could not be found',
+			})
+			return { document: null }
+		}
+	}
 }
 </script>

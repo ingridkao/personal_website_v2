@@ -1,7 +1,7 @@
 <template>
 	<main>
 		<NuxtContent
-			class="prose prose-sm sm:prose lg:prose-lg xl:prose-2xl mx-auto"
+			class="prose prose-sm lg:prose-lg xl:prose-2xl mx-auto"
 			:document="document"
 		/>
 		<Utterances/>
