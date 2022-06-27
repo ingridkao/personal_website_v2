@@ -1,6 +1,5 @@
 <template>
     <div>
-        123
         <!-- <input 
             id="search"
             v-model="search"

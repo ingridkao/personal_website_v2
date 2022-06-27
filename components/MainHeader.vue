@@ -22,6 +22,7 @@
                                 <div class="text-xs">{{linkItem.subtitle}}</div>
                             </NuxtLink>
                         </div>
+                        <GoogleTranslate/>
                         <ColorToggle/>
                         <button
                             @click="toggleProfile"
@@ -77,7 +78,7 @@
                 <NuxtLink 
                     v-for="(linkItem, linkIndex) in MainLink" :key="linkIndex"
                     :to="linkItem.url" 
-                    class="navMobileItem navBtnStylefocus:bg-gray-800"
+                    class="navMobileItem navBtnStylefocus:bg-gray-700"
                 >
                     <div class="text-sm font-medium">{{linkItem.title}}</div>
                     <div class="text-xs">{{linkItem.subtitle}}</div>
@@ -88,7 +89,7 @@
                 <ColorToggle/>
             </div>
         </div>
-        <div :class="[isOpenProfile ? '' : 'hidden', 'absolute right-1.5 mt-2 p-5 rounded-md dark:shadow-2xl bg-white dark:bg-gray-800']">
+        <div :class="[isOpenProfile ? '' : 'hidden', 'absolute right-1.5 mt-2 p-5 rounded-md dark:shadow-2xl bg-white dark:bg-gray-700']">
             <Profile :menu="true"/>
         </div>
     </nav>
@@ -96,16 +97,43 @@
 
 <script>
 import ColorToggle from './ColorToggle.vue'
+import GoogleTranslate from './GoogleTranslate.vue'
 import Profile from './Profile.vue'
 import { MainLink } from '/config/sitemap'
 export default {
-    components: { ColorToggle, Profile },
+    components: { ColorToggle, GoogleTranslate, Profile },
     name: 'MainHeader',
     data() {
         return {
             isOpenMenu: false,
             isOpenProfile: false,
-            MainLink: MainLink
+            MainLink: MainLink,
+            languages:[
+                {
+                    code: "en",
+                    name: "English",
+                    cname: "英语",
+                    ename: "English",
+                },
+                {
+                    code: "zh-TW",
+                    name: "Chinese (Traditional)",
+                    cname: "中文 (繁体)",
+                    ename: "Chinese (Traditional)",
+                },
+                {
+                    code: "ja",
+                    name: "にほんご",
+                    cname: "日语",
+                    ename: "Japanese",
+                },
+                {
+                    code: "ko",
+                    name: "한국어",
+                    cname: "韩语",
+                    ename: "Korean",
+                }
+            ]
         }
     },
     computed: {},
