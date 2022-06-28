@@ -121,7 +121,7 @@ Nuxt2.x只能用`@nuxtjs/color-mode`2.X的版本，這時升級到2.1.1(最後�
 > 讓github支援TOC(Table of Contents)
 > 使用[ekalinin/github-markdown-toc](https://github.com/ekalinin/github-markdown-toc)
 
-紀錄一下使用方法
+紀錄一下使用方法：
 1. 使用`ekalinin/github-markdown-toc`的安裝方式，在專案父層執行會產生一個資料夾`gh-md-toc`
     資料夾如下：
     └─ <Project>
@@ -131,5 +131,18 @@ Nuxt2.x只能用`@nuxtjs/color-mode`2.X的版本，這時升級到2.1.1(最後�
     ./gh-md-toc personal_website_v2/README.md
     ```
 3. 下完指令會出現抓出來的TOC，把他再貼到README.md就好了
+
+## 2. Google Translate button
+> google translate API需要token且超過字數會需要費用，為了避免這個問題，想要找尋
+> 運用Google Translate button來做頁面翻譯，[可參考](https://www.w3schools.com/howto/howto_google_translate.asp)
+> 參考*v-google-translate*寫法，[GitHub](https://github.com/i7eo/v-google-translate/blob/master/src/packages/src/index.vue)
+
+紀錄實踐方法：
+1. 組件於`components/GoogleTranslate.vue`
+2. 原始方法是引入`//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit`，在創建一個`new google.translate.TranslateElement`物件。
+3. 不過這個長相真的有點欠佳，發現*v-google-translatem*也是引入Google Translate button，所以複製他的程式碼做法
+4. v-google-translatem中的做法是先把googl translate先引入進去，比較重要的是運用`MutationObserver`這個原生Web APIs追蹤DOM物件狀態；並使用`dispatchEvent`創建自定義事件，詳細可以看該component裡面的註解。
+
+
 
 tags: `Vue` `Nuxt`

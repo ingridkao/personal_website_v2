@@ -1,7 +1,7 @@
 <template>
     <div class="tranlate_container notranslate mr-5">
         <button @click="showSelectMenu">
-            {{selectedLangInfo? selectedLangInfo.cname: null}}
+            {{selectedLangInfo? selectedLangInfo.name: null}}
         </button>
         <transition name="v-animate-zoom-in-top">
             <div
@@ -18,11 +18,11 @@
                     >
                         <div :class="['language', {active: lang.code === selectedLanguageCode}]">
                             <div class="flag">
-                                <div
-                                    :class="'language__flag language__flag--' + lang.code"
-                                ></div>
+                                <div :class="'language__flag language__flag--' + lang.code"/>
                             </div>
-                            {{ lang.name }}
+                            <div class="title">
+                                {{ selectedLanguageCode === defaultLang? lang.cname: lang.ename }}
+                            </div>
                         </div>
                     </li>
                 </ul>
@@ -31,54 +31,58 @@
         <div id="google_translate_element"></div>
     </div>
 </template>
-
 <script>
-//This feature was heavily inspired by "v-google-translate"
-//https://github.com/i7eo/v-google-translate/blob/master/src/packages/src/index.vue#L316
+/**
+ *  1. How TO - Google Translate
+ *      https://www.w3schools.com/howto/howto_google_translate.asp
+ *  2. This feature was heavily inspired by "v-google-translate"
+ *      https://github.com/i7eo/v-google-translate/blob/master/src/packages/src/index.vue#L316
+ */
 const defaultLang = "zh-TW"
 export default {
     name: 'GoogleTranslate',
     data() {
         return {
+            defaultLang,
             visible: false,
             selectedLanguageCode: "",
             timeout: null,
             languages: [
                 {
                     code: "zh-TW",
-                    name: "Chinese",
+                    name: "繁體中文",
                     cname: "中文",
-                    ename: "Chinese",
+                    ename: "Chinese"
                 },
                 {
                     code: "en",
                     name: "English",
                     cname: "英语",
-                    ename: "English",
+                    ename: "English"
                 },
                 {
                     code: "fr",
                     name: "Français",
                     cname: "法语",
-                    ename: "French",
+                    ename: "French"
                 },
                 {
                     code: "de",
                     name: "Deutsch",
                     cname: "德语",
-                    ename: "German",
+                    ename: "German"
                 },
                 {
                     code: "ja",
                     name: "にほんご",
                     cname: "日语",
-                    ename: "Japanese",
+                    ename: "Japanese"
                 },
                 {
                     code: "ko",
                     name: "한국어",
                     cname: "韩语",
-                    ename: "Korean",
+                    ename: "Korean"
                 }
             ]
         }
@@ -92,6 +96,7 @@ export default {
     },
     methods: {
         initUtils() {
+            //Init functions related to the DOM
             this.dynamicCreateStyle = styles => {
                 const style = document.createElement("style")
                 style.setAttribute("type", "text/css")
@@ -125,62 +130,68 @@ export default {
                     return undefined
                 }
             }
-            this.observer = (target, optionName, callback) => {
+            this.mainObserver = (target, optionName, callback) => {
                 if (!target) return
-                const MutationObserver =
+                //透過MutationmainObserver追蹤 DOM 的變化，可以當作為『觀察者』
+                //當這位觀察者監測到節點變動，他就會執行設定好的任務(callback)
+                const MutationmainObserver =
                     window.MutationObserver ||
                     window.WebKitMutationObserver ||
                     window.MozMutationObserver
-                const optionsMap = {
-                    attribute: {
-                        attribute: true,
-                        attributeOldValue: true
-                    },
-                    child: {
-                        childList: true,
-                        subtree: true
-                    }
-                }
                 if (MutationObserver) {
-                    const Observer = new MutationObserver(records => {
-                        records.map(record => {
+                    const optionsMap = {
+                        attribute: {
+                            attribute: true,
+                            attributeOldValue: true
+                        },
+                        child: {
+                            childList: true,
+                            subtree: true
+                        }
+                    }
+                    const Observer = new MutationObserver(MutationRecords => {
+                        //這個陣列會存放 MutationRecord 物件，該物件記錄著 DOM 變動的相關資訊，後面再詳細介紹。
+                        MutationRecords.map(record => {
                             callback && callback(record)
                         })
                     })
+                    // target: 受到觀察的DOM『節點』。
+                    // optionsMap[optionName]: 指定DOM節點的『哪些項目』需要被觀察。
                     Observer.observe && Observer.observe(target, optionsMap[optionName])
                     return Observer
                 }
             }
         },
         initGoogleTranslate() {
-            const _this = this
             const createStyle = () => {
                 this.dynamicCreateStyle(
                     `body { top: 0 !important; } .skiptranslate { display: none !important; }`
                 )
             }
             const createJsonCallback = () => {
-                window.googleTranslateElementInit =  () => {
+                window.googleTranslateElementInit = () => {
                     new window.google.translate.TranslateElement(
                         { pageLanguage: defaultLang , autoDisplay: false },
                         "google_translate_element"
                     )
-                    _this.setSelectedLanguageCode()
+                    this.setSelectedLanguageCode()
                 }
             }
             const createScript = () => {
                 this.dynamicLoadJs(
                     "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit",
                     () => {
-                        this.GTranslateFireEvent = (a, b) => {
+                        this.GTranslateEventTrigger = (SelectEl) => {
                             try {
                                 if (document.createEvent) {
-                                    const c = document.createEvent("HTMLEvents")
-                                    c.initEvent(b, true, true)
-                                    a.dispatchEvent(c)
+                                    //事件觸發器-chrome,firefox等
+                                    const EventObj = document.createEvent("HTMLEvents")
+                                    EventObj.initEvent("change", true, true)
+                                    SelectEl.dispatchEvent(EventObj)
                                 } else {
-                                    const c = document.createEventObject()
-                                    a.fireEvent("on" + b, c)
+                                    //事件觸發器-IE
+                                    const EventObj = document.createEventObject()
+                                    SelectEl.fireEvent("onchange", EventObj)
                                 }
                             } catch (e) {
                                 console.warn(
@@ -188,21 +199,25 @@ export default {
                                 )
                             }
                         }
-                        this.doGTranslate = item => {
-                            if (item.value) item = item.value
-                            if (item === "") return
-                            var b = item
-                            var t = document.querySelector(".goog-te-combo")
-                            var gtel = document.querySelector(".tranlate_container")
+                        this.doGTranslate = selected => {
+                            if (selected.value) selected = selected.value
+                            if (selected === "") return
+                            // 欲新增的翻譯工具容器
+                            const googTranContainer = document.querySelector(".tranlate_container")
+                            // 原本的語言翻譯小工具
+                            const googTranSelect = document.querySelector(".goog-te-combo")
+
+                            // Comfirm google translate select observer exists.
                             if (
-                                gtel == null ||
-                                gtel.innerHTML.length === 0 ||
-                                t.options.length === 0
+                                googTranContainer == null ||
+                                googTranContainer.innerHTML.length === 0 ||
+                                googTranSelect.options.length === 0
                             ){
+                                //沒有東西存在
                                 this.googleTranslateSelectObserver()
                             } else {
-                                t.value = b
-                                this.GTranslateFireEvent(t, "change")
+                                googTranSelect.value = selected
+                                this.GTranslateEventTrigger(googTranSelect)
                                 this._googleTranslateSelectObserver &&
                                 this._googleTranslateSelectObserver.disconnect()
                             }
@@ -215,7 +230,9 @@ export default {
             createScript()
         },
         googleTranslateSelectObserver() {
-            this._googleTranslateSelectObserver = this.observer(
+            //觀察的DOM節點 -> .goog-te-combo
+            //DOM節點項目需要被觀察 -> .goog-te-combo的child(option)
+            this._googleTranslateSelectObserver = this.mainObserver(
                 document.querySelector(".goog-te-combo"),
                 "child",
                 record => {
@@ -228,7 +245,9 @@ export default {
             )
         },
         htmlLangObserver() {
-            this._htmlLangObserver = this.observer(
+            //觀察的DOM節點-html
+            //DOM節點項目需要被觀察 -> html的attribute
+            this._htmlLangObserver = this.mainObserver(
                 document.querySelector("html"),
                 "attribute",
                 record => {
@@ -286,8 +305,7 @@ export default {
             const browserLanguage =
                 navigator.language ||
                 navigator.browserLanguage ||
-                document.documentElement.lang ||
-                defaultLang
+                document.documentElement.lang
             const filterLanguages = ["zh-CN", "zh-TW"];
             if (filterLanguages.every(l => l !== browserLanguage)) {
                 if (browserLanguage.indexOf("-") > -1) {
@@ -317,9 +335,10 @@ export default {
                 clearTimeout(this.timeout)
             }
             if(this.visible){
+                //5sec
                 this.timeout = setTimeout(() => {
                     this.visible = false
-                }, 3000)
+                }, 5000)
             }
         }
     },
@@ -331,12 +350,12 @@ export default {
         this.htmlLangObserver()
     },
     beforeDestroy() {
-        // if(this._googleTranslateSelectObserver){
-        //     this._googleTranslateSelectObserver.disconnect()
-        // }
-        // if(this._htmlLangObserver){
-        //     this._htmlLangObserver.disconnect()
-        // }
+        if(this._googleTranslateSelectObserver){
+            this._googleTranslateSelectObserver.disconnect()
+        }
+        if(this._htmlLangObserver){
+            this._htmlLangObserver.disconnect()
+        }
     }
 }
 </script>
@@ -388,15 +407,6 @@ export default {
 .eo__dropdown__menu li:hover:before {
     transform: scale(1);
 }
-
-.flag {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    margin-right: 5px;
-}
 .language {
     cursor: pointer;
     display: flex;
@@ -406,6 +416,17 @@ export default {
 .language.active{
     cursor: not-allowed;
     opacity: 0.25;
+}
+.language .flag {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+}
+.language .title {
+    min-width: 40px;
 }
 .language:hover .language__flag{
     filter: drop-shadow(2px 4px 6px rgba(0,0,0,.5));
