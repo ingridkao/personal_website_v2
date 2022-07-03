@@ -1,8 +1,8 @@
 <template>
-	<main>
+	<main id="blogName" class="w-full bg-gray-50 dark:bg-gray-800">
 		<NuxtContent
-			class="prose prose-sm sm:prose lg:prose-lg xl:prose-2xl mx-auto"
 			:document="document"
+			class="text-gray-500 dark:text-gray-400"
 		/>
 		<Utterances/>
 	</main>
@@ -31,5 +31,3 @@ export default {
 	}
 }
 </script>
-
-

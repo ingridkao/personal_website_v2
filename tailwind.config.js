@@ -1,6 +1,11 @@
 module.exports = {
 	theme: {
 		darkSelector: '.dark-mode',
+		extend: {
+			colors: {
+				'indigo': '#1fb6ff'
+			}
+		}
 	},
 	variants: {
 		backgroundColor: ['dark', 'dark-hover', 'dark-group-hover', 'dark-even', 'dark-odd', 'hover', 'responsive'],

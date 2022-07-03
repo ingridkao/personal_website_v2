@@ -1,15 +1,21 @@
 <template>
-    <div>
-        <h2>Nuxt.js Blog</h2>
+    <main>
+        <h2>Books</h2>
 
         <input id="search" v-model="Search" placeholder="Search..." />
 
-        <ul>
-            <li v-for="article in articles" :key="article.slug">
-                <nuxt-link :to="article.path">{{ article.title }}</nuxt-link>
+        <ul class="">
+            <li 
+				v-for="article in articles" 
+				:key="article.slug"
+				class="px-3 text-gray-500 dark:text-gray-400 hover:text-gray-600 focus:outline-none focus:text-gray-500 focus:bg-gray-800"
+			>
+                <nuxt-link :to="article.path">
+					{{ article.title }}
+				</nuxt-link>
             </li>
         </ul>
-    </div>
+    </main>
 </template>
 <script>
 export default {
@@ -43,3 +49,8 @@ export default {
 	watchQuery: true
 }
 </script>
+<style scope>
+    /* .navItem {
+        @apply ml-4 px-3 py-2 rounded-md;
+    } */
+</style>

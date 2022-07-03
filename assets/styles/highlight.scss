@@ -1,0 +1,147 @@
+pre {
+    background: #29292e;
+    border-radius: 2px;
+    overflow: auto;
+    padding: 1rem;
+    color: #eff1f9;
+    line-height: 1.42em;
+    font-size: 13px;
+    code {
+        background: #29292e;
+        color: #eff0f9;
+        white-space: pre;
+    }
+}
+
+@media screen and (min-width: 380px) {
+    pre {
+        font-size: 15px;
+    }
+}
+  
+div.highlight pre.highlight code {
+    font-size: inherit;
+    padding: 0px;
+}
+  
+div.inner-comment div.body div.highlight pre.highlight {
+    background: #29292e;
+    code{
+        font-size: inherit;
+        white-space: inherit;
+        background: inherit;
+        color: inherit;
+    }
+}
+    
+.highlight {
+    background: #29292e;
+    color: #f8f8f2;
+    .hll {
+        background-color: #49483e;
+    }
+    .err {
+        text-shadow: 0 0 7px #f9690e;
+    }
+    .c,
+    .ch,
+    .cm,
+    .cp,
+    .cpf,
+    .c1,
+    .cs,
+    .gu {
+        color: #808080;
+    }
+    .k,
+    .kc,
+    .kd,
+    .kp,
+    .kr,
+    .kt,
+    .no {
+        color: #f39c12;
+    }
+    .l {
+        color: #dda0dd;
+    }
+    .n,
+    .p {
+        color: #f8f8f2;
+    }
+    .o,
+    .gd {
+        color: #f9690e;
+    }
+        
+    .ge {font-style: italic;}
+    
+    .gi,
+    .na,
+    .nc {color: #7ed07e;}
+    
+    .gs {font-weight: bold;}
+
+    .kn {color: #f9690e;}
+    
+    .ld,
+    .s {color: #f2ca27;}
+    
+    .m {color: #dda0dd;}
+        
+    .nb {color: #f8f8f2;}
+    
+        
+    .nd {color: #7ed07e;}
+    
+    .ni {color: #f8f8f2;}
+    
+    .ne {color: #7ed07e;}
+    
+    .nf {color: #7ed07e;}
+    
+    .nl {color: #f8f8f2;}
+    
+    .nn {color: #f8f8f2;}
+    
+    .nx {color: #7ed07e;}
+    
+    .py {color: #f8f8f2;}
+    
+    .nt {color: #f9690e;}
+    
+    .nv {color: #f8f8f2;}
+    
+    .ow {color: #f9690e;}
+    
+    .w {color: #f8f8f2;}
+    
+    .mb,
+    .mf,
+    .mh,
+    .mi,
+    .mo,
+    .se,
+    .il {color: #dda0dd;}
+    
+    .sa,
+    .sb,
+    .sc,
+    .sd,
+    .dl,
+    .sh,
+    .si,
+    .sx,
+    .sr,
+    .s1,
+    .s2,
+    .ss{color: #f2ca27;}
+    
+    .bp,
+    .vc,
+    .vg,
+    .vi,
+    .vm {color: #f8f8f2;}
+    
+    .fm {color: #7ed07e;}
+} 

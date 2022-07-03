@@ -1,0 +1,47 @@
+@import 'tokens.scss';
+
+html {
+    height: 100%;
+    font-size: 12px;
+    font-weight: $body-font-weight;
+    font-family: $body-font-family, $sans-serif-fallback-stack;
+    color: $on-surface-color;
+	line-height: 1.5;
+    -ms-overflow-style: scrollbar;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-touch-callout: none;
+}
+  
+@media (min-width: $screen-sm) {
+    html {
+        font-size: 16px;
+    }
+}
+  
+body {
+    height: 100%;
+    min-width: 320px;
+    background-color: $surface-color;
+    -webkit-text-rendering: optimizeLegibility;
+    text-rendering: optimizeLegibility; // Enable kerning and optional ligatures
+    font-synthesis: none;
+    font-kerning: normal;
+    font-feature-settings: $body-font-feature-settings;
+    -webkit-font-smoothing: antialiased; // Make type rendering look crisper
+    -moz-osx-font-smoothing: grayscale; // Make type rendering look crisper
+    -webkit-overflow-scrolling: touch;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+  
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $display-font-family, $sans-serif-fallback-stack;
+    font-weight: $display-font-weight;
+    font-feature-settings: $display-font-feature-settings;
+    line-height: 1.2;
+}

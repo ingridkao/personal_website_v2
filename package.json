@@ -32,6 +32,8 @@
     "jest": "^27.4.4",
     "postcss": "^8.4.4",
     "push-dir": "^0.4.1",
+    "sass": "^1.50.0",
+    "sass-loader": "10",
     "tailwindcss-dark-mode": "^1.1.7",
     "vue-jest": "^3.0.4"
   }

@@ -110,5 +110,10 @@ $ npm run start
 
 # generate static project
 $ npm run generate
+
+# generate gitpage
+$ npm run deploy
 ```
+
 ###### tags: `Vue` `Nuxt`
+

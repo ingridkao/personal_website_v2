@@ -3,3 +3,37 @@
 @import 'tailwindcss/components';
 /* purgecss end ignore */
 @import 'tailwindcss/utilities';
+
+/* nuxt-content start*/
+.nuxt-content{
+    @apply max-w-2xl mx-auto;
+}
+.nuxt-content blockquote{
+    @apply mb-1 pl-2;
+    border-left: 4px solid rgba(113,113,122,0.6);
+}
+.nuxt-content h2{
+    @apply inline-block mt-6 mb-3 text-xl;
+    border-bottom: 4px solid #7eceda;
+}
+.nuxt-content p{
+    @apply my-4;
+}
+.nuxt-content ol,
+.nuxt-content ul{
+    @apply relative w-10/12 mb-1;
+}
+.nuxt-content ol{
+    list-style-type: decimal;
+}
+.nuxt-content ol ol{
+    list-style-type: circle;;
+}
+.nuxt-content ul li{
+    @apply relative w-full m-1 pl-4;
+}
+.nuxt-content ul>li:before{
+    content: "";
+    @apply absolute -left-1 top-2 w-1.5 h-1.5 rounded-full;
+    background-color: rgba(113,113,122,0.5);
+}
