@@ -48,8 +48,7 @@ export default {
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-  ],
+  plugins: [],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -93,8 +92,9 @@ export default {
     }
   },
 
-  purgeCSS: {
-    whitelist: ['dark-mode']
+  // set the classSuffix option to an empty string: https://color-mode.nuxtjs.org/#live-demo
+  colorMode: {
+    classSuffix: '',
   },
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
@@ -128,7 +128,7 @@ export default {
 
   // https://nuxtjs.org/docs/features/loading
   loading: {
-    color: 'blue',
-    height: '5px'
+    color: '#7acedc',
+    height: '3px'
   }
 }

@@ -1,8 +1,8 @@
 <template>
-	<main id="blogName" class="w-full bg-gray-50 dark:bg-gray-800">
+	<main class="w-11/12 bg-gray-50 dark:bg-gray-800">
 		<NuxtContent
 			:document="document"
-			class="text-gray-500 dark:text-gray-400"
+			class="prose lg:prose-lg mb-20"
 		/>
 		<Utterances/>
 	</main>

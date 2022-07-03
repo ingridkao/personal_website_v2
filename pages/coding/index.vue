@@ -1,14 +1,21 @@
 <template>
 	<main>
-		<h1>
-			踩雷紀錄
-		</h1>
+        <input id="search" v-model="Search" placeholder="Search..." />
 		<div>
-			<span v-for='(item, index) in tags' :key='index'>{{item}}</span>
+			<button 
+				v-for="(item, index) in tags"
+				:key="index"
+				@click="filterType(item)"
+			>
+				{{item}}
+			</button>
+			<button @click="clearFilter">Clear</button>
 		</div>
-		<div class="tableWrapper">
-			<span v-for="(item, index) in articles" :key="index">{{item.title}}</span>
-		</div>
+        <!-- <ul>
+            <li v-for="(article, index) in articles" :key="index">
+                <nuxt-link :to="article.path">{{ article.title }}</nuxt-link>
+            </li>
+        </ul> -->
 	</main>
 </template>
 
@@ -17,15 +24,34 @@ import CodingList from '/config/CodingList'
 export default {
   	name: 'CodingIndex',
 	head: {
-		title: 'Coding notes | IngridKao',
+		title: 'Coding notes | 叩叮 | IngridKao',
 		meta: [
-			{ hid: 'description', name: 'description', content: '踩雷紀錄'}
+			{ hid: 'description', name: 'description', content: '叩叮 | Coding'}
 		]
 	},
 	data(){
 		return {
-			tags: ['Vue', 'Docker', 'Git'],
-			articles: Object.values(CodingList)
+			// Search: this.$router? this.$router.query.q: "",
+			Search: "",
+			tags: ['Vue', 'Nuxt', 'Git'],
+			articles: CodingList.map(item => item.url)
+		}
+	},
+	watch: {
+		Search () {
+			console.log(this.$router);
+			// this.$router.replace({ 
+			// 	query: this.Search ? { q: this.Search } : undefined 
+			// }).catch(() => { })
+		}
+	},
+	watchQuery: true,
+	methods:{
+		filterType(type){
+			this.articles = CodingList.filter(item => item.tag === type)
+		},
+		clearFilter(){
+			this.articles = CodingList.map(item => item.url)
 		}
 	}
 }

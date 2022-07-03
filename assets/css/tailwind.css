@@ -1,39 +1,124 @@
-/* purgecss start ignore */
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-/* purgecss end ignore */
-@import 'tailwindcss/utilities';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.main-text{
+    @apply inline-block mb-2 text-gray-700 dark:text-gray-400;
+}
+.content-text{
+    @apply text-gray-600 dark:text-gray-400;
+}
+.strong-text{
+    @apply text-gray-500 dark:text-gray-300;
+}
+
 
 /* nuxt-content start*/
 .nuxt-content{
-    @apply max-w-2xl mx-auto;
+    @apply max-w-2xl mx-auto content-text;
 }
-.nuxt-content blockquote{
-    @apply mb-1 pl-2;
-    border-left: 4px solid rgba(113,113,122,0.6);
+.nuxt-content h1{
+    @apply text-xl main-text;
+}
+.nuxt-content h1 a{
+    border-bottom: 2px solid #7eceda;
+    text-decoration: dashed;
 }
 .nuxt-content h2{
-    @apply inline-block mt-6 mb-3 text-xl;
-    border-bottom: 4px solid #7eceda;
+    @apply inline-block text-lg strong-text mt-10 mb-2 px-1;
+    position: relative;
+    /* border-bottom: 1px solid #7eceda; */
+}
+.nuxt-content h2:before{
+    @apply absolute bg-skyblueBorder w-full left-0 bottom-0;
+    content: '';
+    height: 40%;
+}
+.nuxt-content h3{
+    @apply text-base;
 }
 .nuxt-content p{
-    @apply my-4;
+    @apply my-4 content-text;
 }
+.nuxt-content > p{
+    text-indent: 2em;
+}
+.nuxt-content strong{
+    @apply strong-text;
+}
+.nuxt-content a{
+    @apply strong-text hover:text-gray-600 dark:hover:text-gray-300;
+}
+.nuxt-content pre.language-basic{
+    background-color: rgba(218,218,218,0.5);
+}
+.nuxt-content pre.language-basic code{
+    text-shadow: 0 1px #999
+}
+.nuxt-content blockquote{
+    @apply mt-0 mb-0;
+    border-left: 4px solid rgba(113,113,122,0.6);
+}
+
+.nuxt-content blockquote p{
+    @apply mt-0 mb-2 pl-2;
+}
+
+.nuxt-content aside{
+    @apply my-6 p-2;
+    background-color: rgba(255,255,255,0.1);
+}
+
+.nuxt-content blockquote p::before{
+    content: '';
+}
+
+.nuxt-content hr{
+    @apply mb-0 mt-4 opacity-50;
+}
+
 .nuxt-content ol,
 .nuxt-content ul{
-    @apply relative w-10/12 mb-1;
+    list-style-type: none;
+    @apply relative mb-2;
 }
 .nuxt-content ol{
     list-style-type: decimal;
 }
 .nuxt-content ol ol{
-    list-style-type: circle;;
+    list-style-type: circle;
 }
 .nuxt-content ul li{
-    @apply relative w-full m-1 pl-4;
+    @apply relative w-full m-1 pl-4 strong-text;
+}
+.nuxt-content ul ol > li{
+    @apply mb-4 text-skyblueDark dark:text-skyblueLight;
+}
+.nuxt-content ul ol > li::marker {
+    @apply text-skyblueDark dark:text-skyblueLight;
 }
 .nuxt-content ul>li:before{
-    content: "";
     @apply absolute -left-1 top-2 w-1.5 h-1.5 rounded-full;
+    content: "";
     background-color: rgba(113,113,122,0.5);
+}
+
+ol#TOC{
+    @apply relative mt-8 py-1 bg-skyblueBg ;
+}
+ol#TOC span{
+    @apply inline-block cursor-pointer;
+}
+ol#TOC:before{
+    content: 'Table-Of-Content';
+    @apply absolute text-skyblueLight -top-6 left-0 opacity-90;
+}
+.navBtn {
+    @apply p-1 rounded-full;
+}
+.navBtnStyle {
+    @apply hover:text-gray-600 dark:hover:text-gray-200 focus:outline-none focus:text-gray-300;
+}
+.flexItemsCenter{
+    @apply flex items-center;
 }

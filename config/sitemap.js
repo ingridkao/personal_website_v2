@@ -22,14 +22,14 @@ export const MainLink = [
     //     lastmod: '2022-03-30T13:30:00.000Z'
     // },
     {
-        url: '/coding',
+        url: '/Coding',
         title: '叩叮',
         subtitle: 'Coding',
         priority: 1,
         lastmod: '2022-03-30T13:30:00.000Z'
     },
     {
-        url: '/investment',
+        url: '/Investment',
         title: '投資',
         subtitle: 'Investment',
         priority: 1,
@@ -51,6 +51,6 @@ export default {
             lastmod: '2022-03-30T13:30:00.000Z'
         },
         ...MainLink,
-        ...Object.keys(CodingList)
+        ...CodingList
     ]
 }

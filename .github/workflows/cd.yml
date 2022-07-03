@@ -12,19 +12,33 @@ jobs:
         node: [14]
 
     steps:
-      - name: Checkout
+      - name: Checkout 🛎
         uses: actions/checkout@master
 
-      - name: Setup node env
-        uses: actions/setup-node@v2.1.2
+      - name: Setup node env 🏗
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
 
-      - name: Install dependencies
-        run: yarn
+      - name: Install dependencies 👨🏻‍💻
+        run: |
+          if [ -e yarn.lock ]; then
+          yarn install --frozen-lockfile
+          elif [ -e package-lock.json ]; then
+          npm ci --prefer-offline --no-audit
+          else
+          npm i
+          fi
 
       - name: Generate
-        run: yarn generate
+        run: |
+          if [ -e yarn.lock ]; then
+          yarn generate
+          elif [ -e package-lock.json ]; then
+          npm run generate
+          else
+          npm run generate
+          fi
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

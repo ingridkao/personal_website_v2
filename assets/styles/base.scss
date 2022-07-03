@@ -2,7 +2,7 @@
 
 html {
     height: 100%;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: $body-font-weight;
     font-family: $body-font-family, $sans-serif-fallback-stack;
     color: $on-surface-color;
@@ -12,7 +12,7 @@ html {
     -webkit-touch-callout: none;
 }
   
-@media (min-width: $screen-sm) {
+@media (max-width: $screen-sm) {
     html {
         font-size: 16px;
     }

@@ -12,7 +12,7 @@
 						<span class="block xl:inline text-blue-300">online business</span>
 					</h1>
 					<p class="
-						text-base sm:text-lg md:text-xl 
+						text-base md:text-base
 						text-gray-500 dark:text-gray-400 
 						sm:max-w-lg
 						mt-2 sm:mt-4 sm:mx-auto md:mt-4 lg:mx-0
