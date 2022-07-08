@@ -14,6 +14,7 @@
 
 
 /* nuxt-content start*/
+
 .nuxt-content{
     @apply max-w-2xl mx-auto content-text;
 }
@@ -103,6 +104,17 @@
     background-color: rgba(113,113,122,0.5);
 }
 
+.nuxt-content img{
+    @apply mb-0;
+}
+
+.imgAlt{
+    @apply mb-10 text-xs opacity-60;
+}
+.imgAlt a{
+    @apply no-underline;
+}
+
 ol#TOC{
     @apply relative mt-8 py-1 bg-skyblueBg ;
 }
@@ -121,4 +133,10 @@ ol#TOC:before{
 }
 .flexItemsCenter{
     @apply flex items-center;
+}
+.blog_container{
+    @apply w-11/12 bg-gray-50 dark:bg-gray-800;
+}
+.articles-list{
+    @apply px-3 text-gray-500 dark:text-gray-400 hover:text-gray-600 focus:outline-none focus:text-gray-500 focus:bg-gray-800;
 }

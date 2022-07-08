@@ -1,26 +1,19 @@
 <template>
 	<main>
         <input id="search" v-model="Search" placeholder="Search..." />
-		<div>
-			<button 
-				v-for="(item, index) in tags"
-				:key="index"
-				@click="filterType(item)"
+        <ul>
+            <li 
+				v-for="(article) in articles" 
+				:key="article.slug"
+				class="articles-list"
 			>
-				{{item}}
-			</button>
-			<button @click="clearFilter">Clear</button>
-		</div>
-        <!-- <ul>
-            <li v-for="(article, index) in articles" :key="index">
                 <nuxt-link :to="article.path">{{ article.title }}</nuxt-link>
             </li>
-        </ul> -->
+        </ul>
 	</main>
 </template>
 
 <script>
-import CodingList from '/config/CodingList'
 export default {
   	name: 'CodingIndex',
 	head: {
@@ -29,30 +22,39 @@ export default {
 			{ hid: 'description', name: 'description', content: '叩叮 | Coding'}
 		]
 	},
-	data(){
-		return {
-			// Search: this.$router? this.$router.query.q: "",
-			Search: "",
-			tags: ['Vue', 'Nuxt', 'Git'],
-			articles: CodingList.map(item => item.url)
+	async asyncData ({ $content, route }) {
+		//https://content.nuxtjs.org/v1/getting-started/fetching/
+		const Search = (route && route.query && route.query.q)? route.query.q: null
+		// console.log(Search);
+		let query = $content('Coding', {
+			 	deep: true 
+			})
+		if(Search){
+			query = query.search('title', Search)
+		}
+		// .only(['title', 'description', 'image', 'path'])
+		// .sortBy('date', 'desc')
+		try {
+			const Articles = await query.fetch()
+			return {
+				Search,
+				articles: Articles? Articles: []
+			}
+		} catch(error) {
+			error({
+				statusCode: 403,
+				message: `Error: ${error}`,
+			})
 		}
 	},
 	watch: {
 		Search () {
-			console.log(this.$router);
-			// this.$router.replace({ 
-			// 	query: this.Search ? { q: this.Search } : undefined 
-			// }).catch(() => { })
+			this.$router.replace({ 
+				query: this.Search ? { q: this.Search } : undefined 
+			}).catch(() => {})
 		}
 	},
-	watchQuery: true,
-	methods:{
-		filterType(type){
-			this.articles = CodingList.filter(item => item.tag === type)
-		},
-		clearFilter(){
-			this.articles = CodingList.map(item => item.url)
-		}
-	}
+	watchQuery: true
 }
 </script>
+

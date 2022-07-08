@@ -1,7 +1,7 @@
 <template>
-	<main>
+	<main class="blog_container">
 		<NuxtContent
-			class="prose lg:prose-lg xl:prose-2xl mx-auto"
+			class="prose lg:prose-lg mb-20"
 			:document="document"
 		/>
 		<Utterances/>

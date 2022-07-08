@@ -1,4 +1,3 @@
-import CodingList from './CodingList'
 export const MainLink = [
     {
         url: '/BlogMD',
@@ -50,7 +49,6 @@ export default {
             priority: 1, // 網頁的重要程度，0.1 - 1
             lastmod: '2022-03-30T13:30:00.000Z'
         },
-        ...MainLink,
-        ...CodingList
+        ...MainLink
     ]
 }

@@ -22,23 +22,17 @@
 </template>
 
 <script>
-// import { mapGetters, mapMutations } from 'vuex'
 export default {
     name: 'ColorToogle',
-    data() {
-        return {}
-    },
     computed: {
         dark() {
             return this.$colorMode.value === "dark"
         }
-        // ...mapGetters(['dark'])
     },
     methods: {
-        // ...mapMutations(['SET_DARK']),
         toggleDarkMode() {
-            // this.SET_DARK(this.$colorMode.value == "dark");
-            this.$colorMode.preference = this.dark ? "light": "dark";
+            const Mode = this.dark ? "light": "dark"
+            this.$colorMode.preference = Mode
         }
     }
 }

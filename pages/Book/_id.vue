@@ -1,5 +1,5 @@
 <template>
-	<main class="w-11/12 bg-gray-50 dark:bg-gray-800">
+	<main class="blog_container">
 		<NuxtContent
 			:document="document"
 			class="prose lg:prose-lg mb-20"

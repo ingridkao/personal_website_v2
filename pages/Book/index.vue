@@ -25,7 +25,7 @@ export default {
 	async asyncData ({ $content, route }) {
 		//https://content.nuxtjs.org/v1/getting-started/fetching/
 		const Search = (route && route.query && route.query.q)? route.query.q: null
-		console.log(Search);
+		// console.log(Search);
 		let query = $content('Book', {
 			 	deep: true 
 			})
@@ -57,8 +57,3 @@ export default {
 	watchQuery: true
 }
 </script>
-<style scope>
-    /* .navItem {
-        @apply ml-4 px-3 py-2 rounded-md;
-    } */
-</style>
