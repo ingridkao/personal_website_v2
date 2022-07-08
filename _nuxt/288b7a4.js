@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[6],{370:function(n,t,e){"use strict";e.r(t);var r={name:"ErrorPage"},c=e(18),component=Object(c.a)(r,(function(){this._self._c;return this._m(0)}),[function(){var n=this._self._c;return n("main",[n("h1",[this._v("404")])])}],!1,null,null,null);t.default=component.exports}}]);
