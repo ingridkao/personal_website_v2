@@ -37,7 +37,7 @@ export const MainLink = [
 ]
 export default {
     hostname: 'https://ingridkao.github.io/personal_website_v2/',
-    lastmod: '2022-03-24',
+    lastmod: '2022-07-14',
     gzip: true,
     exclude: [
         '/404',
@@ -47,7 +47,7 @@ export default {
         {
             url: '/',
             priority: 1, // 網頁的重要程度，0.1 - 1
-            lastmod: '2022-03-30T13:30:00.000Z'
+            lastmod: '2022-07-14T13:30:00.000Z'
         },
         ...MainLink
     ]

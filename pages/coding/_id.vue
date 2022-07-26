@@ -10,23 +10,22 @@
 
 <script>
 export default {
-	async asyncData ({ $content, route }) {
+	async asyncData ({ $content, route, error }) {
 		const Search = route? route.params.id: ""
-		let query = await $content('Coding')
 		if (Search) {
-			query = query.search(Search)
+			const query = $content('Coding').search(Search)
 			try {
-				const document = await query.fetch()
-				return { document: document[0] }
-			} catch(error) {
-				console.log(`Error: ${error}`);
+				const articles = await query.fetch()
+				return { document: articles[0] }
+			} catch(e) {
+				error({
+					statusCode: 400,
+					message: e
+				})
 			}
 		}else{
-			error({
-				statusCode: 404,
-				message: 'Page could not be found',
-			})
-			return { document: null }
+      		error({ statusCode: 404, message: 'Post not found' })
+			return { articles: null }
 		}
 	}
 }

@@ -8,6 +8,8 @@ const Info = {
   image: "mainImage.png"
 }
 
+const RouterBase = process.env.DEPLOY_ENV === 'GH_PAGES'? {base: '/personal_website_v2/'}: {}
+
 // Global page headers: https://go.nuxtjs.dev/config-head
 export default {
   head: {
@@ -115,7 +117,7 @@ export default {
   //https://www.nuxtjs.cn/faq/github-pages
   target: 'static',
   router: {
-    base: '/personal_website_v2/',
+    ...RouterBase,
     // https://nuxtjs.org/docs/features/file-system-routing#extendroutes
     extendRoutes(routes, resolve) {
       routes.push({

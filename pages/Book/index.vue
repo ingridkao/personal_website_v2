@@ -25,10 +25,9 @@ export default {
 	async asyncData ({ $content, route }) {
 		//https://content.nuxtjs.org/v1/getting-started/fetching/
 		const Search = (route && route.query && route.query.q)? route.query.q: null
-		// console.log(Search);
 		let query = $content('Book', {
-			 	deep: true 
-			})
+			deep: true 
+		})
 		if(Search){
 			query = query.search('title', Search)
 		}
@@ -42,7 +41,7 @@ export default {
 			}
 		} catch(error) {
 			error({
-				statusCode: 403,
+				statusCode: 400,
 				message: `Error: ${error}`,
 			})
 		}
